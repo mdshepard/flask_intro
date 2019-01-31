@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <title>Spontaneous Recipe!</title>
+</head>
+<body>
+    <h1>
+        <b>{{ recipe.name }}</b>
+    </h1>
+
+    <div>
+        <h2>Time: {{ recipe.time }}</h2>
+        <h2>Yields: {{ recipe.yields }}</h2>
+        <h2>Ingredients: </h2>
+        <ol>
+            {% for ingredient in recipe.ingredients.split('\n') %}
+                {% if ingredient %}
+                    <li>{{ ingredient }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+        <h2>Instructions:</h2>
+        <ol>
+            {% for step in recipe.instructions.split('\n') %}
+                {% if step %}
+                    <li>{{ step }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+        <p>You may find the original recipe at <a href="{{ recipe.url }}">{{ recipe.name }}</a></p>
+    </div>
+</body>
+</html>
